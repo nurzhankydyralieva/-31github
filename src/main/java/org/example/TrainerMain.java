@@ -11,14 +11,13 @@ public class TrainerMain {
         TrainerService traineeService = context.getBean("trainerService", TrainerService.class);
         System.out.println("All trainers");
         traineeService.getAllTrainers().forEach(System.out::println);
-        System.out.println("--------------------------------------");
 
-        Trainer trainer = new Trainer();
-        trainer.setId(3L);
-        trainer.setName("Andrea");
-        Trainer newUser = traineeService.createOrUpdateTrainer(trainer);
-        System.out.println("Trainer saved: " + newUser);
-        traineeService.getAllTrainers().forEach(System.out::println);
+        Trainer saved = Trainer.builder().id(4L).name("Andrea").build();
+        System.out.println("\nTrainer saved\n" + traineeService.createOrUpdateTrainer(saved));
 
+        Trainer updated = Trainer.builder().id(4L).name("Jackson").build();
+        System.out.println("\nTrainer updated\n" + traineeService.createOrUpdateTrainer(updated));
+
+        System.out.println("\nFind trainee by id\n" + traineeService.getTrainerByID(1L));
     }
 }

@@ -8,15 +8,15 @@ import javax.annotation.PostConstruct;
 import java.util.*;
 
 public class InMemoryTraineeDAO implements TraineeDAO {
-    private Map<Integer, Trainee> traineeMap;
-    private static int TRAINEE_COUNTER;
+    private Map<Long, Trainee> traineeMap;
+    private Long idCounter = 1L;
 
     @PostConstruct
     public void initialDatabase() {
         traineeMap = new HashMap<>();
-        traineeMap.put(++TRAINEE_COUNTER, new Trainee(1L, Calendar.getInstance().getTime(), "London", new User()));
-        traineeMap.put(++TRAINEE_COUNTER, new Trainee(2L, Calendar.getInstance().getTime(), "Moscow", new User()));
-        traineeMap.put(++TRAINEE_COUNTER, new Trainee(3L, Calendar.getInstance().getTime(), "Paris", new User()));
+        traineeMap.put(1L, new Trainee(1L, Calendar.getInstance().getTime(), "London", new User(1L)));
+        traineeMap.put(2L, new Trainee(2L, Calendar.getInstance().getTime(), "Moscow", new User(2L)));
+        traineeMap.put(3L, new Trainee(3L, Calendar.getInstance().getTime(), "Paris", new User(3L)));
     }
 
     @Override
@@ -26,23 +26,25 @@ public class InMemoryTraineeDAO implements TraineeDAO {
 
     @Override
     public Trainee findById(Long id) {
-        return traineeMap.values().stream().filter(trainee -> trainee.getId() == id).findAny().orElse(null);
+        return traineeMap.values().stream().filter(trainee -> Objects.equals(trainee.getId(), id)).findAny().orElse(null);
     }
 
     @Override
-    public void save(Trainee trainer) {
-
+    public void create(Trainee trainee) {
+        trainee.setId(idCounter);
+        traineeMap.put(idCounter, trainee);
+        idCounter++;
     }
 
     @Override
-    public void update(Trainee trainer) {
-
+    public void update(Trainee trainee) {
+        if (traineeMap.containsKey(trainee.getId())) {
+            traineeMap.put(trainee.getId(), trainee);
+        }
     }
 
     @Override
     public void delete(Long id) {
-
+        traineeMap.remove(id);
     }
-
-
 }

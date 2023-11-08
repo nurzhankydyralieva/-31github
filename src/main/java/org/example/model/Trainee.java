@@ -1,7 +1,10 @@
 package org.example.model;
 
+import lombok.Builder;
+
 import java.util.Date;
 
+@Builder
 public class Trainee {
     private Long id;
     private Date dateOfBirth;
@@ -9,6 +12,10 @@ public class Trainee {
     private User userId;
 
     public Trainee() {
+    }
+
+    public Trainee(Long id) {
+        this.id = id;
     }
 
     public Trainee(Long id, Date dateOfBirth, String address, User userId) {

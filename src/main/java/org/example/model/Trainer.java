@@ -1,10 +1,17 @@
 package org.example.model;
 
+import lombok.Builder;
+
+@Builder
 public class Trainer {
     private Long id;
     private String name;
 
     public Trainer() {
+    }
+
+    public Trainer(Long id) {
+        this.id = id;
     }
 
     public Trainer(Long id, String name) {

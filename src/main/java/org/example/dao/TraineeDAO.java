@@ -10,7 +10,7 @@ public interface TraineeDAO {
     List<Trainee> findAll();
 
 
-    void save(Trainee trainer);
+    void create(Trainee trainee);
 
     void update(Trainee trainer);
 

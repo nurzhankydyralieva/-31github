@@ -9,10 +9,9 @@ public interface TrainerDAO {
 
     List<Trainer> findAll();
 
-    void save(Trainer trainer);
+    void create(Trainer trainer);
 
     void update(Trainer trainer);
 
-    void delete(Long id);
 
 }

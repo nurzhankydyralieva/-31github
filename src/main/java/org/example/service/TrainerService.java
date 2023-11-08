@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class TrainerService {
-    private TrainerDAO trainerDAO;
+    private final TrainerDAO trainerDAO;
 
     @Autowired
     public TrainerService(TrainerDAO trainerDAO) {
@@ -20,17 +20,16 @@ public class TrainerService {
         return trainerDAO.findAll();
     }
 
+    public Trainer getTrainerByID(Long id) {
+        return trainerDAO.findById(id);
+    }
+
     public Trainer createOrUpdateTrainer(Trainer trainer) {
         if (trainer.getId() == null) {
-            trainerDAO.save(trainer);
+            trainerDAO.create(trainer);
         } else {
             trainerDAO.update(trainer);
         }
         return trainer;
     }
-
-    public void deleteTrainer(Long id) {
-        trainerDAO.delete(id);
-    }
-
 }
