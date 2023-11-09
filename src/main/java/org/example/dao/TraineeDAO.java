@@ -1,18 +1,39 @@
 package org.example.dao;
 
 import org.example.model.Trainee;
+import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+@Repository
+public class TraineeDAO {
+    private Map<Long, Trainee> traineeStorage = new HashMap<>();
 
-public interface TraineeDAO {
-    Trainee findById(Long id);
+    public Trainee findById(Long id) {
+        return traineeStorage.get(id);
+    }
 
-    List<Trainee> findAll();
+    public List<Trainee> findAll() {
+        return new ArrayList<>(traineeStorage.values());
+    }
+
+    public void create(Trainee trainee) {
+        traineeStorage.put(trainee.getId(), trainee);
+    }
 
 
-    void create(Trainee trainee);
+    public void update(Trainee trainee) {
+        if (traineeStorage.containsKey(trainee.getId())) {
+            traineeStorage.put(trainee.getId(), trainee);
+        }
+    }
 
-    void update(Trainee trainer);
+    public void delete(Long id) {
+        traineeStorage.remove(id);
+    }
 
-    void delete(Long id);
+
+
 }

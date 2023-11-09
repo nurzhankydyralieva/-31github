@@ -9,7 +9,7 @@ public class TrainerMain {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         TrainerService traineeService = context.getBean("trainerService", TrainerService.class);
-        System.out.println("All trainers");
+
         traineeService.getAllTrainers().forEach(System.out::println);
 
         Trainer saved = Trainer.builder().id(4L).name("Andrea").build();
