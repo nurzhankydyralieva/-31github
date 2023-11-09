@@ -1,6 +1,8 @@
 package org.example.storage;
 
 import org.example.config.StorageConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +10,7 @@ import javax.annotation.PostConstruct;
 
 @Component
 public class InitStorage {
-    //    @Value("#{${simple.map}}")
+//        @Value("#{${simple.map}}")
 //    private Map<String, String> simpleMap;
 //
 //
@@ -18,7 +20,7 @@ public class InitStorage {
 //            System.out.println(entry.getKey() + ": " + entry.getValue());
 //        }
 //    }
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(InitStorage.class);
     private StorageConfig storage;
 
     @Autowired
@@ -26,10 +28,15 @@ public class InitStorage {
         this.storage = storage;
     }
 
+    public StorageConfig getStorage() {
+        return storage;
+    }
+
     @PostConstruct
     public void init() {
-        System.out.println(storage.trainerMap());
-        System.out.println(storage.traineeMap());
-        System.out.println(storage.trainingMap());
+        LOGGER.info("Get all Trainers, Trainees and Trainings from database");
+        storage.trainerMap().values().stream().forEach(System.out::println);
+        storage.traineeMap().values().stream().forEach(System.out::println);
+        storage.trainingMap().values().stream().forEach(System.out::println);
     }
 }

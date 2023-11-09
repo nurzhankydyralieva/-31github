@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 @Repository
 public class TrainingDAO {
-    private Map<Long, Training> trainingMap = new HashMap<>();
+    private final Map<Long, Training> trainingMap = new HashMap<>();
 
     public Training findById(Long id) {
         return trainingMap.get(id);

@@ -7,33 +7,37 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 @Repository
 public class TraineeDAO {
-    private Map<Long, Trainee> traineeStorage = new HashMap<>();
+
+
+    private final Map<Long, Trainee> traineeMap = new HashMap<>();
+
 
     public Trainee findById(Long id) {
-        return traineeStorage.get(id);
+        return traineeMap.get(id);
     }
 
     public List<Trainee> findAll() {
-        return new ArrayList<>(traineeStorage.values());
+        return new ArrayList<>(traineeMap.values());
     }
 
     public void create(Trainee trainee) {
-        traineeStorage.put(trainee.getId(), trainee);
+
+        traineeMap.put(trainee.getId(), trainee);
     }
 
 
     public void update(Trainee trainee) {
-        if (traineeStorage.containsKey(trainee.getId())) {
-            traineeStorage.put(trainee.getId(), trainee);
+        if (traineeMap.containsKey(trainee.getId())) {
+            traineeMap.put(trainee.getId(), trainee);
         }
     }
 
     public void delete(Long id) {
-        traineeStorage.remove(id);
+        traineeMap.remove(id);
     }
-
 
 
 }

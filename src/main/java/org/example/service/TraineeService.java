@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class TraineeService {
     private final TraineeDAO traineeDAO;
@@ -24,15 +25,17 @@ public class TraineeService {
         return traineeDAO.findById(id);
     }
 
-    public void createOrUpdateTrainee(Trainee trainee) {
+    public Trainee createOrUpdateTrainee(Trainee trainee) {
         if (trainee.getId() == null) {
             traineeDAO.create(trainee);
         } else {
             traineeDAO.update(trainee);
         }
+        return trainee;
     }
 
     public void deleteTrainee(Long id) {
         traineeDAO.delete(id);
     }
+
 }
