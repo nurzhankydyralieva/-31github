@@ -10,8 +10,6 @@ import java.util.Map;
 
 @Repository
 public class TraineeDAO {
-
-
     private final Map<Long, Trainee> traineeMap = new HashMap<>();
 
 
@@ -27,7 +25,6 @@ public class TraineeDAO {
 
         traineeMap.put(trainee.getId(), trainee);
     }
-
 
     public void update(Trainee trainee) {
         if (traineeMap.containsKey(trainee.getId())) {

@@ -27,6 +27,11 @@ public class User {
         this.isActive = isActive;
     }
 
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
     public Long getId() {
         return id;
     }

@@ -21,10 +21,12 @@ public class TrainerDAO {
         return new ArrayList<>(trainerStorage.values());
     }
 
-    public void create(Trainer trainer) {
-        trainerStorage.put(trainer.getId(), trainer);
+    //    public void create(Trainer trainer) {
+//        trainerStorage.put(trainer.getId(), trainer);
+//    }
+    public Trainer create(Trainer trainer) {
+        return trainerStorage.put(trainer.getId(), trainer);
     }
-
 
     public void update(Trainer trainer) {
         if (trainerStorage.containsKey(trainer.getId())) {

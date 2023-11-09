@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 @Repository
 public class TrainingDAO {
     private final Map<Long, Training> trainingMap = new HashMap<>();

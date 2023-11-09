@@ -10,26 +10,12 @@ import javax.annotation.PostConstruct;
 
 @Component
 public class InitStorage {
-//        @Value("#{${simple.map}}")
-//    private Map<String, String> simpleMap;
-//
-//
-//    @PostConstruct
-//    public void initializeStorage() {
-//        for (Map.Entry<String, String> entry : simpleMap.entrySet()) {
-//            System.out.println(entry.getKey() + ": " + entry.getValue());
-//        }
-//    }
     private static final Logger LOGGER = LoggerFactory.getLogger(InitStorage.class);
     private StorageConfig storage;
 
     @Autowired
     public void setStorage(StorageConfig storage) {
         this.storage = storage;
-    }
-
-    public StorageConfig getStorage() {
-        return storage;
     }
 
     @PostConstruct
