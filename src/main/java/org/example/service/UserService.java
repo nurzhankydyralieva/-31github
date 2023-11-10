@@ -42,7 +42,6 @@ public class UserService {
         return false; // Placeholder, replace with actual logic
     }
 
-    // Create a profile with generated username and password
     public User createUserPassword(String firstName, String lastName) {
         String username = generateUsername(firstName, lastName);
         String password = generateRandomPassword();

@@ -17,7 +17,7 @@ public class TraineeMain {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         TraineeService traineeService = context.getBean("traineeService", TraineeService.class);
         Trainee created = Trainee.builder().id(3L).address("London").dateOfBirth(Calendar.getInstance().getTime()).userId(User.builder().id(2L).build()).build();
-        LOGGER.info("Trainee is created");
+         //  LOGGER.info("Trainee is created");
         Trainee newTrainee = traineeService.createOrUpdateTrainee(created);
         System.out.println(newTrainee);
 

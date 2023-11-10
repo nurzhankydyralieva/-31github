@@ -20,10 +20,9 @@ public class StorageConfig {
     private Map<String, Map<String, String>> traineeMap;
     @Value("#{${training.map}}")
     private Map<String, Map<String, String>> trainingMap;
-
     @Bean
     public Map<String, Trainer> trainerMap() {
-        Map<String, Trainer> trainerResult = new HashMap<>();
+       Map<String, Trainer> trainerResult = new HashMap<>();
 
         for (Map.Entry<String, Map<String, String>> entry : trainersMap.entrySet()) {
             String trainerKey = entry.getKey();

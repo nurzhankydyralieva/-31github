@@ -1,19 +1,26 @@
 package org.example.service;
 
+import org.example.config.StorageConfig;
 import org.example.dao.TraineeDAO;
 import org.example.model.Trainee;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 
 @Service
 public class TraineeService {
+    private StorageConfig storage;
     private final TraineeDAO traineeDAO;
+    private static final Logger LOGGER = LoggerFactory.getLogger(TraineeService.class);
 
     @Autowired
-    public TraineeService(TraineeDAO traineeDAO) {
+    public TraineeService(StorageConfig storage, TraineeDAO traineeDAO) {
+        this.storage = storage;
         this.traineeDAO = traineeDAO;
     }
 
@@ -36,6 +43,13 @@ public class TraineeService {
 
     public void deleteTrainee(Long id) {
         traineeDAO.delete(id);
+    }
+
+
+    @PostConstruct
+    public void init() {
+        LOGGER.info("Get all Trainees from database");
+        storage.traineeMap().values().stream().forEach(System.out::println);
     }
 
 }

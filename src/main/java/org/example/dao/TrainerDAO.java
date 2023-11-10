@@ -1,6 +1,8 @@
 package org.example.dao;
 
 import org.example.model.Trainer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ import java.util.Map;
 
 @Repository
 public class TrainerDAO {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(TrainerDAO.class);
     private Map<Long, Trainer> trainerStorage = new HashMap<>();
 
     public Trainer findById(Long id) {
@@ -21,11 +23,11 @@ public class TrainerDAO {
         return new ArrayList<>(trainerStorage.values());
     }
 
-    //    public void create(Trainer trainer) {
-//        trainerStorage.put(trainer.getId(), trainer);
-//    }
+
     public Trainer create(Trainer trainer) {
-        return trainerStorage.put(trainer.getId(), trainer);
+        Trainer trainer1 = trainerStorage.put(trainer.getId(), trainer);
+        LOGGER.info("Trainer is created");
+        return trainer1;
     }
 
     public void update(Trainer trainer) {

@@ -13,7 +13,7 @@ public class TrainerMain {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         TrainerService traineeService = context.getBean("trainerService", TrainerService.class);
-        LOGGER.info("Trainer is created");
+     //   LOGGER.info("Trainer is created");
         Trainer saved = Trainer.builder().id(4L).name("Andrea").build();
         System.out.println(traineeService.createOrUpdateTrainer(saved));
 

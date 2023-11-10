@@ -11,7 +11,6 @@ public class Main {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService = context.getBean(UserService.class);
 
-
         User user = userService.createUserPassword("Tom","Oliver");
         System.out.println("Username: " + user.getUserName());
         System.out.println("Password: " + user.getPassword());
