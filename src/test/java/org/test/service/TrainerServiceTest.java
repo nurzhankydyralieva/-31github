@@ -1,8 +1,8 @@
 package org.test.service;
 
-import org.crud_test.project.dao.TrainerDAO;
-import org.crud_test.project.model.Trainer;
-import org.crud_test.project.service.TrainerService;
+import org.crud_trainee.project.dao.TrainerDAO;
+import org.crud_trainee.project.model.Trainer;
+import org.crud_trainee.project.service.TrainerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
