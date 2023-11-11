@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.dao.TrainerDAO;
 import org.example.model.Trainer;
+import org.example.service.TrainerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

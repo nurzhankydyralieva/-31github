@@ -3,6 +3,7 @@ package org.example.service;
 import org.example.dao.TraineeDAO;
 import org.example.model.Trainee;
 import org.example.model.User;
+import org.example.service.TraineeService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
