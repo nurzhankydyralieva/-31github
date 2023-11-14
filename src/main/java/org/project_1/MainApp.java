@@ -1,8 +1,8 @@
-package org.project;
+package org.project_1;
 
-import org.project.config.AppConfig;
-import org.project.model.Trainer;
-import org.project.storage.Storage;
+import org.project_1.config.AppConfig;
+import org.project_1.model.Trainer;
+import org.project_1.storage.Storage;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Map;
