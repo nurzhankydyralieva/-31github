@@ -1,4 +1,4 @@
-package org.project.entity;
+package org.project_2.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public class Training {
     @Column(name = "training_name")
     private String trainingName;
     @OneToOne
-    @JoinColumn(name = "training_type_id")
+    @PrimaryKeyJoinColumn(name = "training_type_id")
     private TrainingType trainingTypeId;
     @Column(name = "training_date")
     private Date trainingDate;

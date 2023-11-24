@@ -1,4 +1,4 @@
-package org.project.dao;
+package org.project_2.dao;
 
 
 import com.example.project.entity.User;
@@ -22,7 +22,7 @@ public class UserDAO {
     }
 
     @Transactional(readOnly = true)
-    public User showUserById(int id) {
+    public User showUser(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(User.class, id);
     }

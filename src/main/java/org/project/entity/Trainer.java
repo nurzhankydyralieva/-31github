@@ -24,4 +24,7 @@ public class Trainer {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Trainer(Integer id) {
+        this.id = id;
+    }
 }

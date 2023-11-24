@@ -1,4 +1,4 @@
-package org.project.entity;
+package org.project_2.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,16 +11,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "training_type")
-public class TrainingType {
+@Table(name = "specialization")
+public class Specialization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "training_type_id")
+    @Column(name = "specialization_id")
     private Integer id;
-    @Column(name = "training_type_name")
-    private String trainingTypeName;
+    @Column(name = "speciality")
+    private String speciality;
 
-    public TrainingType(Integer id) {
+
+    public Specialization(Integer id) {
         this.id = id;
     }
 }

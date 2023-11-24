@@ -1,11 +1,7 @@
 package org.project.facade;
 
-import com.example.project.entity.Specialization;
-import com.example.project.entity.Trainer;
-import com.example.project.entity.User;
-import com.example.project.service.SpecializationService;
-import com.example.project.service.TrainerService;
-import com.example.project.service.UserService;
+import com.example.project.entity.*;
+import com.example.project.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,9 +14,43 @@ public class ServiceFacade {
     private final TrainerService trainerService;
     private final SpecializationService specializationService;
     private final UserService userService;
+    private final TraineeService traineeService;
+    private final TrainingService trainingService;
 
-    public void createSpecialization(Specialization specialization) {
-        specializationService.createSpecialization(specialization);
+    public void createTraining(Training training) {
+        trainingService.createTraining(training);
+    }
+
+    public List<Training> selectAllTrainings() {
+        return trainingService.selectAllTrainings();
+    }
+
+    public Training selectTrainingById(int id) {
+        return trainingService.selectTrainingById(id);
+    }
+
+    public void createTrainee(Trainee trainee) {
+        traineeService.createTrainee(trainee);
+    }
+
+    public List<Trainee> selectAllTrainees() {
+        return traineeService.selectAllTrainees();
+    }
+
+    public Trainee selectTraineeById(int id) {
+        return traineeService.selectTraineeById(id);
+    }
+
+    public void updateTrainee(int id, Trainee updatedTrainee) {
+        traineeService.updateTrainee(id, updatedTrainee);
+    }
+
+    public Trainee selectTraineeByUserName(String userName) {
+        return traineeService.selectTraineeByUserName(userName);
+    }
+
+    public void updateTraineePassword(int id, String password) {
+        traineeService.updatePassword(id, password);
     }
 
     public void createTrainer(Trainer trainer) {
@@ -31,7 +61,51 @@ public class ServiceFacade {
         return trainerService.selectAllTrainers();
     }
 
+    public Trainer selectTrainerById(int id) {
+        return trainerService.selectTrainerById(id);
+    }
+
+    public void deleteTrainerByUserName(String userName) {
+        trainerService.deleteTrainerByUserName(userName);
+    }
+
+    public void updateTrainer(int id, Trainer updatedTrainer) {
+        trainerService.updateTrainer(id, updatedTrainer);
+    }
+
+    public Trainer selectTrainerByUserName(String userName) {
+        return trainerService.selectTrainerByUserName(userName);
+    }
+
+    public void updateTrainerPassword(int id, String password) {
+        trainerService.updatePassword(id, password);
+    }
+
     public void createUser(User user) {
         userService.createUser(user);
+    }
+
+    public List<User> selectAllUsers() {
+        return userService.selectAllUsers();
+    }
+
+    public User selectUserById(int id) {
+        return userService.selectUserById(id);
+    }
+
+    public void createSpecialization(Specialization specialization) {
+        specializationService.createSpecialization(specialization);
+    }
+
+    public List<Specialization> selectAllSpecializations() {
+        return specializationService.selectAllSpecializations();
+    }
+
+    public Specialization selectSpecializationById(int id) {
+        return specializationService.getSpecializationById(id);
+    }
+
+    public void updateSpecialization(int id, Specialization updatedSpecialization) {
+        specializationService.updateSpecialization(id, updatedSpecialization);
     }
 }

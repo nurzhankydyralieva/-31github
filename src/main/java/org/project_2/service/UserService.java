@@ -1,26 +1,16 @@
-package org.project.service;
+package org.project_2.service;
 
 import com.example.project.dao.UserDAO;
 import com.example.project.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserDAO userDAO;
 
-    public List<User> selectAllUsers() {
-        return userDAO.selectAllUsers();
-    }
-
     public void createUser(User user) {
         userDAO.createUser(user);
-    }
-
-    public User selectUserById(int id) {
-        return userDAO.showUserById(id);
     }
 }

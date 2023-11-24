@@ -19,4 +19,25 @@ public class TrainerService {
     public List<Trainer> selectAllTrainers() {
         return trainerDAO.selectAllTrainers();
     }
+
+    public Trainer selectTrainerById(int id) {
+        return trainerDAO.showTrainer(id);
+    }
+
+    public void updateTrainer(int id, Trainer updatedTrainer) {
+        trainerDAO.updateTrainer(id, updatedTrainer);
+    }
+
+    public Trainer selectTrainerByUserName(String userName) {
+        return trainerDAO.selectTrainerByUserName(userName);
+    }
+
+    public void deleteTrainerByUserName(String userName) {
+        trainerDAO.deleteTrainerByUserName(userName);
+    }
+
+    public void updatePassword(int id, String password) {
+        trainerDAO.updatePassword(id, password);
+    }
+
 }

@@ -1,4 +1,4 @@
-package org.project.entity;
+package org.project_2.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,5 +31,4 @@ public class User {
     public User(Integer id) {
         this.id = id;
     }
-
 }

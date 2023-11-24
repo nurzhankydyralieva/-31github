@@ -1,4 +1,4 @@
-package org.project.entity;
+package org.project_2.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,10 +24,6 @@ public class Trainee {
     @Column(name = "address")
     private String address;
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @PrimaryKeyJoinColumn(name = "user_id")
     private User user;
-
-    public Trainee(Integer id) {
-        this.id = id;
-    }
 }

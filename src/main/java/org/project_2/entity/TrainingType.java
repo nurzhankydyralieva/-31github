@@ -1,4 +1,4 @@
-package org.project.entity;
+package org.project_2.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,8 +19,4 @@ public class TrainingType {
     private Integer id;
     @Column(name = "training_type_name")
     private String trainingTypeName;
-
-    public TrainingType(Integer id) {
-        this.id = id;
-    }
 }
