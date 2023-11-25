@@ -1,4 +1,4 @@
-package org.project;
+package org.project_3;
 
 
 import com.example.project.config.SpringConfig;
@@ -13,15 +13,15 @@ public class Main {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
         ServiceFacade facade = context.getBean(ServiceFacade.class);
 
-        var user = User.builder().firstName("Maxim2").lastName("Smith2").userName("Tom2").password("333").isActive(true).criteria("Criteria for Selecting Training Modalities").build();
+        var user = User.builder().firstName("Maxim").lastName("Smith").userName("Tom").password("333").isActive(true).build();
         var updatedUser = User.builder().firstName("Katy").lastName("Simson").userName("Moon").password("123").isActive(true).build();
-        //facade.createUser(user);
-        // facade.selectAllUsers().stream().forEach(System.out::println);
+        //   facade.createUser(user);
+        //  facade.selectAllUsers().stream().forEach(System.out::println);
         // System.out.println(facade.selectUserById(1));
 
         var specialization = Specialization.builder().speciality("Sports Analytics").build();
         var updatedSpecialization = Specialization.builder().speciality("Technology specializations").build();
-        //facade.createSpecialization(specialization);
+        // facade.createSpecialization(specialization);
         //  facade.selectAllSpecializations().stream().forEach(System.out::println);
         //  System.out.println(facade.selectSpecializationById(1));
         // facade.updateSpecialization(1, updatedSpecialization);
@@ -33,36 +33,25 @@ public class Main {
         //   System.out.println(facade.selectTrainerById(1));
         // facade.updateTrainer(1, updatedTrainer);
         //System.out.println(facade.selectTrainerByUserName("Tom"));
-        //   facade.deleteTrainerByUserName("Tom");
+        //  facade.deleteTrainerByUserName("Tom");
         // facade.updateTrainerPassword(1,"8888");
-        //facade.activateTrainer(1);
-        //facade.deactivateTrainer(1);
-        //  facade.selectUserNameAndPasswordTrainer("Tom","333");
-        //facade.selectTrainerTrainingListByTrainerUserNameAndCriteria("Tom", "sport");
-        //System.out.println(facade.selectActiveTrainersList(1));
-
-
-        var training = Training.builder().traineeId(new Trainee(1)).trainerId(new Trainer(1)).trainingName("Dance")
-                .trainingDate(new Date()).trainingDuration(2).build();
-        // facade.createTraining(training);
-        //  facade.selectAllTrainings().stream().forEach(System.out::println);
-        //  System.out.println(facade.selectTrainingById(1));
 
 
         var trainee = Trainee.builder().dateOfBirth(new Date()).address("Kyrgyzstan").user(new User(1)).build();
         var updatedTrainee = Trainee.builder().dateOfBirth(new Date()).address("Mexico").user(new User(3)).build();
-        // facade.createTrainee(trainee);
-        // facade.selectAllTrainees().stream().forEach(System.out::println);
+        //  facade.createTrainee(trainee);
+        //facade.selectAllTrainees().stream().forEach(System.out::println);
         // System.out.println(facade.selectTraineeById(2));
         //  facade.updateTrainee(1, updatedTrainee);
         //  System.out.println(facade.selectTraineeByUserName("Katy"));
         // facade.updateTraineePassword(1,"trainee");
-        //facade.activateTrainee(1);
-        //facade.deactivateTrainee(1);
-        // facade.selectUserNameAndPasswordTrainee("Tom","333");
-        // facade.deleteTraineeByUserName("Tom");
-        // facade.selectTraineeTrainingListByTraineeUserNameAndCriteria("Tom", "sport");
-        //facade.deleteTrainee(3);
+
+
+        var training = Training.builder().traineeId(new Trainee(1)).trainerId(new Trainer(1)).trainingName("Dance")
+                .trainingTypeId(new TrainingType(1)).trainingDate(new Date()).trainingDuration(2).build();
+        // facade.createTraining(training);
+        //  facade.selectAllTrainings().stream().forEach(System.out::println);
+        //  System.out.println(facade.selectTrainingById(1));
 
 
         context.close();

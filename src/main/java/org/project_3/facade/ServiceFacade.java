@@ -1,4 +1,4 @@
-package org.project.facade;
+package org.project_3.facade;
 
 import com.example.project.entity.*;
 import com.example.project.service.*;
@@ -53,25 +53,6 @@ public class ServiceFacade {
         traineeService.updatePassword(id, password);
     }
 
-    public void activateTrainee(int id) {
-        traineeService.activateTrainee(id);
-    }
-
-    public void deactivateTrainee(int id) {
-        traineeService.deactivateTrainee(id);
-    }
-
-    public void deleteTraineeByUserName(String userName) {
-        traineeService.deleteTraineeByUserName(userName);
-    }
-
-    public List<Training> selectTraineeTrainingListByTraineeUserNameAndCriteria(String userName, String criteria) {
-        return traineeService.selectTraineeTrainingListByTraineeUserNameAndCriteria(userName, criteria);
-    }
-    public void deleteTrainee(int id) {
-        traineeService.deleteTrainee(id);
-    }
-
     public void createTrainer(Trainer trainer) {
         trainerService.createTrainer(trainer);
     }
@@ -98,26 +79,6 @@ public class ServiceFacade {
 
     public void updateTrainerPassword(int id, String password) {
         trainerService.updatePassword(id, password);
-    }
-
-    public void activateTrainer(int id) {
-        trainerService.activateTrainer(id);
-    }
-
-    public void deactivateTrainer(int id) {
-        trainerService.deactivateTrainer(id);
-    }
-
-    public List<Trainer> selectActiveTrainersList(int id) {
-        return trainerService.getActiveTrainersList(id);
-    }
-
-    public Trainer selectUserNameAndPasswordTrainer(String userName, String password) {
-        return trainerService.selectUserNameAndPassword(userName, password);
-    }
-
-    public List<Training> selectTrainerTrainingListByTrainerUserNameAndCriteria(String userName, String criteria) {
-        return trainerService.selectTrainerTrainingListByTrainerUserNameAndCriteria(userName, criteria);
     }
 
     public void createUser(User user) {
@@ -147,10 +108,4 @@ public class ServiceFacade {
     public void updateSpecialization(int id, Specialization updatedSpecialization) {
         specializationService.updateSpecialization(id, updatedSpecialization);
     }
-
-    public Trainee selectUserNameAndPasswordTrainee(String userName, String password) {
-        return traineeService.selectUserNameAndPassword(userName, password);
-    }
-
-
 }

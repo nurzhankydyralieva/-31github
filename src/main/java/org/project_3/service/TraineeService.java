@@ -1,8 +1,7 @@
-package org.project.service;
+package org.project_3.service;
 
 import com.example.project.dao.TraineeDAO;
 import com.example.project.entity.Trainee;
-import com.example.project.entity.Training;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -28,36 +27,10 @@ public class TraineeService {
     public void updateTrainee(int id, Trainee updatedTrainee) {
         traineeDAO.updateTrainee(id, updatedTrainee);
     }
-
     public Trainee selectTraineeByUserName(String userName) {
         return traineeDAO.selectTraineeByUserName(userName);
     }
-
     public void updatePassword(int id, String password) {
-        traineeDAO.updatePassword(id, password);
-    }
-
-    public void activateTrainee(int id) {
-        traineeDAO.activateTrainee(id);
-    }
-
-    public void deactivateTrainee(int id) {
-        traineeDAO.deactivateTrainee(id);
-    }
-
-    public Trainee selectUserNameAndPassword(String userName, String password) {
-        return traineeDAO.selectUserNameAndPassword(userName, password);
-    }
-
-    public void deleteTraineeByUserName(String userName) {
-        traineeDAO.deleteTraineeByUserName(userName);
-    }
-
-    public List<Training> selectTraineeTrainingListByTraineeUserNameAndCriteria(String userName, String criteria) {
-        return traineeDAO.getTraineeTrainingListByTraineeUserNameAndCriteria(userName, criteria);
-    }
-
-    public void deleteTrainee(int id) {
-        traineeDAO.deleteTrainee(id);
+        traineeDAO.updatePassword(id,password);
     }
 }
