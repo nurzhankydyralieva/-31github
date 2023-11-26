@@ -1,4 +1,4 @@
-package org.project.facade;
+package org.project_4.facade;
 
 import com.example.project.entity.*;
 import com.example.project.service.*;
@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
@@ -17,8 +16,6 @@ public class ServiceFacade {
     private final UserService userService;
     private final TraineeService traineeService;
     private final TrainingService trainingService;
-    private final TrainingTypeService trainingTypeService;
-    private final PasswordGeneratorService passwordGeneratorService;
 
     public void createTraining(Training training) {
         trainingService.createTraining(training);
@@ -30,10 +27,6 @@ public class ServiceFacade {
 
     public Training selectTrainingById(int id) {
         return trainingService.selectTrainingById(id);
-    }
-
-    public void updateTraining(int id, Training updatedTraining) {
-        trainingService.updateTraining(id, updatedTraining);
     }
 
     public void createTrainee(Trainee trainee) {
@@ -72,14 +65,9 @@ public class ServiceFacade {
         traineeService.deleteTraineeByUserName(userName);
     }
 
-    public void updateTraineeTrainerList(int updateTraineeId, Set<Trainer> trainers) {
-        traineeService.updateTraineeTrainerList(updateTraineeId, trainers);
-    }
-
     public List<Training> selectTraineeTrainingListByTraineeUserNameAndCriteria(String userName, String criteria) {
         return traineeService.selectTraineeTrainingListByTraineeUserNameAndCriteria(userName, criteria);
     }
-
     public void deleteTrainee(int id) {
         traineeService.deleteTrainee(id);
     }
@@ -164,22 +152,5 @@ public class ServiceFacade {
         return traineeService.selectUserNameAndPassword(userName, password);
     }
 
-    public void createTrainingType(TrainingType trainingType) {
-        trainingTypeService.createTrainingType(trainingType);
-    }
 
-    public void updateTrainingType(int id, TrainingType updatedTraining) {
-        trainingTypeService.updateTrainingType(id, updatedTraining);
-    }
-    public List<User> usersUserNameAndPasswordGenerator() {
-        return passwordGeneratorService.selectAllUsersUserNameAndPassword();
-    }
-
-    public List<Trainer> trainersUserNameAndPasswordGenerator() {
-        return passwordGeneratorService.selectAllTrainersUserNameAndPassword();
-    }
-
-    public List<Trainee> traineesUserNameAndPasswordGenerator() {
-        return passwordGeneratorService.selectAllTraineesUserNameAndPassword();
-    }
 }

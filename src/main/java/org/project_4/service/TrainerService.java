@@ -1,4 +1,4 @@
-package org.project.service;
+package org.project_4.service;
 
 import com.example.project.dao.TrainerDAO;
 import com.example.project.entity.Trainer;
@@ -60,4 +60,5 @@ public class TrainerService {
     public List<Trainer> getActiveTrainersList(int id) {
         return trainerDAO.getActiveTrainersList(id);
     }
+
 }

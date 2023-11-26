@@ -1,4 +1,4 @@
-package org.project.dao;
+package org.project_4.dao;
 
 import com.example.project.entity.Training;
 import lombok.RequiredArgsConstructor;
@@ -46,15 +46,4 @@ public class TrainingDAO {
         LOGGER.info("Training is created");
     }
 
-    @Transactional
-    public void updateTraining(int id, Training updatedTraining) {
-        Session session = sessionFactory.getCurrentSession();
-        Training training = session.get(Training.class, id);
-        training.setTrainerId(updatedTraining.getTrainerId());
-        training.setTraineeId(updatedTraining.getTraineeId());
-        training.setTrainingName(updatedTraining.getTrainingName());
-        training.setTrainingDate(updatedTraining.getTrainingDate());
-        training.setTrainingDuration(updatedTraining.getTrainingDuration());
-        LOGGER.info("Training is updated");
-    }
 }

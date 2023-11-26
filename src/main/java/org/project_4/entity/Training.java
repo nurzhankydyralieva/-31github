@@ -1,4 +1,4 @@
-package org.project.entity;
+package org.project_4.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -42,4 +42,5 @@ public class Training {
     @NotEmpty(message = "Training duration should not be empty")
     @Column(name = "training_duration")
     private Number trainingDuration;
+
 }

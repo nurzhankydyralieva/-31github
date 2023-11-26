@@ -1,7 +1,6 @@
-package org.project.dao;
+package org.project_4.dao;
 
 import com.example.project.entity.Trainee;
-import com.example.project.entity.Trainer;
 import com.example.project.entity.Training;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
@@ -75,17 +73,6 @@ public class TraineeDAO {
         updatedPassword.setParameter("password", password);
         updatedPassword.executeUpdate();
         LOGGER.info("Trainee's password is updated");
-    }
-
-    @Transactional
-    public void updateTraineeTrainerList(int updateTraineeId, Set<Trainer> trainers) {
-        Session session = sessionFactory.getCurrentSession();
-        Integer traineeId = updateTraineeId;
-        Set<Trainer> newTrainers = trainers;
-        Query query = session.createQuery("UPDATE Trainee t SET t.trainers = :newTrainers WHERE t.id = :traineeId");
-        query.setParameter("newTrainers", newTrainers);
-        query.setParameter("traineeId", traineeId);
-        query.executeUpdate();
     }
 
     @Transactional

@@ -1,4 +1,4 @@
-package org.project.entity;
+package org.project_4.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,4 +22,8 @@ public class TrainingType {
     @NotEmpty(message = "training's type name should not be empty")
     @Column(name = "training_type_name")
     private String trainingTypeName;
+
+    public TrainingType(Integer id) {
+        this.id = id;
+    }
 }

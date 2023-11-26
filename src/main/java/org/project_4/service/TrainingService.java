@@ -1,4 +1,4 @@
-package org.project.service;
+package org.project_4.service;
 
 import com.example.project.dao.TrainingDAO;
 import com.example.project.entity.Training;
@@ -22,9 +22,5 @@ public class TrainingService {
 
     public Training selectTrainingById(int id) {
         return trainingDAO.showTraining(id);
-    }
-
-    public void updateTraining(int id, Training updatedTraining) {
-        trainingDAO.updateTraining(id, updatedTraining);
     }
 }
