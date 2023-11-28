@@ -1,4 +1,4 @@
-package org.project.dao;
+package org.project_5.dao;
 
 import com.example.project.entity.TrainingType;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package org.project.entity;
+package org.project_5.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -32,7 +32,7 @@ public class User {
     @Column(name = "password")
     private String password;
     @Column(name = "is_active")
-    private Boolean isActive;
+    private boolean isActive;
     @Column(name = "criteria")
     private String criteria;
 

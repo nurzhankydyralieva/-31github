@@ -1,4 +1,4 @@
-package org.project.dao;
+package org.project_5.dao;
 
 
 import com.example.project.entity.User;
@@ -47,7 +47,7 @@ public class UserDAO {
         userToUpdate.setLastName(updatedUser.getLastName());
         userToUpdate.setUserName(updatedUser.getUserName());
         userToUpdate.setPassword(updatedUser.getPassword());
-        userToUpdate.setIsActive(updatedUser.getIsActive());
+        userToUpdate.setActive(updatedUser.isActive());
         LOGGER.info("User is updated");
     }
 

@@ -1,4 +1,4 @@
-package org.project.dao;
+package org.project_5.dao;
 
 import com.example.project.entity.Trainer;
 import com.example.project.entity.Training;
@@ -57,6 +57,9 @@ public class TrainerDAO {
     @Transactional
     public void createTrainer(Trainer trainer) {
         Session session = sessionFactory.getCurrentSession();
+        Trainer saveTrainer = new Trainer();
+        saveTrainer.setSpecialization(trainer.getSpecialization());
+        saveTrainer.setUser(trainer.getUser());
         session.save(trainer);
         LOGGER.info("Trainer is created");
     }
@@ -128,7 +131,7 @@ public class TrainerDAO {
                 .setParameter("criteria", criteria)
                 .getResultList();
     }
-//TODO after AND is extra
+
     @Transactional
     public List<Trainer> getActiveTrainersList(int id) {
         Session session = sessionFactory.getCurrentSession();

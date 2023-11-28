@@ -1,32 +1,34 @@
-package org.project.service;
+package org.project.facade;
 
 import com.example.project.entity.Trainer;
 import com.example.project.entity.Training;
 
 import java.util.List;
 
-public interface TrainerService {
+public interface TrainerFacade {
     void createTrainer(Trainer trainer);
 
     List<Trainer> selectAllTrainers();
 
     Trainer selectTrainerById(int id);
 
+    void deleteTrainerByUserName(String userName);
+
     void updateTrainer(int id, Trainer updatedTrainer);
 
     Trainer selectTrainerByUserName(String userName);
 
-    void deleteTrainerByUserName(String userName);
-
-    void updatePassword(int id, String password);
+    void updateTrainerPassword(int id, String password);
 
     void activateTrainer(int id);
 
     void deactivateTrainer(int id);
 
-    Trainer selectUserNameAndPassword(String userName, String password);
+    List<Trainer> selectActiveTrainersList(int id);
+
+    Trainer selectUserNameAndPasswordTrainer(String userName, String password);
 
     List<Training> selectTrainerTrainingListByTrainerUserNameAndCriteria(String userName, String criteria);
 
-    List<Trainer> getActiveTrainersList(int id);
+    List<Trainer> trainersUserNameAndPasswordGenerator();
 }

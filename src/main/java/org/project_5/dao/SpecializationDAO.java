@@ -1,4 +1,4 @@
-package org.project.dao;
+package org.project_5.dao;
 
 import com.example.project.entity.Specialization;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +34,8 @@ public class SpecializationDAO {
     @Transactional
     public void createSpecialization(Specialization specialization) {
         Session session = sessionFactory.getCurrentSession();
+        Specialization speciality = new Specialization();
+        speciality.setSpeciality(specialization.getSpeciality());
         session.save(specialization);
         LOGGER.info("Specialization is created");
     }
