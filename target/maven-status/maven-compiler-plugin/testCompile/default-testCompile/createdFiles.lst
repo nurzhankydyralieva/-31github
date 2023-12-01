@@ -1,0 +1,4 @@
+org\example\AppTest.class
+org\example\service\TraineeServiceTest.class
+org\example\service\TrainerServiceTest.class
+org\example\service\TrainingServiceTest.class

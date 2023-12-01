@@ -1,11 +1,11 @@
 package org.example.service;
 
-import org.example.dao.TrainingDAO;
-import org.example.model.Trainee;
-import org.example.model.Trainer;
-import org.example.model.Training;
-import org.example.model.TrainingType;
-import org.example.service.TrainingService;
+import org.crud_example.example.dao.TrainingDAO;
+import org.crud_example.example.model.Trainee;
+import org.crud_example.example.model.Trainer;
+import org.crud_example.example.model.Training;
+import org.crud_example.example.model.TrainingType;
+import org.crud_example.example.service.TrainingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
