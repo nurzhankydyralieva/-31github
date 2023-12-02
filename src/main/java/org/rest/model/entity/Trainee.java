@@ -1,5 +1,6 @@
 package org.rest.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,12 +15,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "trainee")
-public class Trainee extends User{
+public class Trainee extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trainee_id")
-    private Integer id;
+    private Long id;
     @Column(name = "date_of_birth")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
     @Column(name = "address")
     private String address;
@@ -32,7 +34,4 @@ public class Trainee extends User{
             inverseJoinColumns = @JoinColumn(name = "training_id")
     )
     private List<Training> trainings;
-    @Column(name = "is_assigned")
-    private Boolean isAssigned;
-
 }

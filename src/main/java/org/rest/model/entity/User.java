@@ -14,7 +14,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Integer id;
+    private Long id;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -27,8 +27,6 @@ public class User {
     private Boolean isActive;
     @Column(name = "criteria")
     private String criteria;
-
-    public User(Integer id) {
-        this.id = id;
-    }
+    @Column(name = "is_assigned")
+    private Boolean isAssigned;
 }

@@ -2,7 +2,6 @@ package org.rest.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,20 +10,14 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 @Entity
 @Table(name = "trainer")
-public class Trainer {
+public class Trainer extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trainer_id")
-    private Integer id;
-    @OneToOne
-    @JoinColumn(name = "specialization_id")
-    private Specialization specialization;
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    private Long id;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "trainer_trainee",
@@ -39,8 +32,4 @@ public class Trainer {
             inverseJoinColumns = @JoinColumn(name = "training_id")
     )
     private List<Training> trainings;
-
-    public Trainer(Integer id) {
-        this.id = id;
-    }
 }
