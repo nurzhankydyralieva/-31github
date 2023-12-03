@@ -1,6 +1,5 @@
 package org.rest.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +20,8 @@ public class Trainee extends User {
     @Column(name = "trainee_id")
     private Long id;
     @Column(name = "date_of_birth")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     @Column(name = "address")
     private String address;

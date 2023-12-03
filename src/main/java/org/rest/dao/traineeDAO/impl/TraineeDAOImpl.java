@@ -1,9 +1,11 @@
 package org.rest.dao.traineeDAO.impl;
 
 import com.epam.xstack.dao.traineeDAO.TraineeDAO;
+import com.epam.xstack.mapper.trainee_mapper.GetTraineeProfileRequestMapper;
 import com.epam.xstack.mapper.trainee_mapper.TraineeRegistrationRequestMapper;
-import com.epam.xstack.mapper.trainee_mapper.TraineeRegistrationResponseMapper;
+import com.epam.xstack.model.dto.trainee.response.GetTraineeProfileResponseDTO;
 import com.epam.xstack.model.dto.trainee.response.TraineeRegistrationResponseDTO;
+import com.epam.xstack.model.dto.trainee.reuest.GetTraineeProfileRequestDTO;
 import com.epam.xstack.model.dto.trainee.reuest.TraineeRegistrationRequestDTO;
 import com.epam.xstack.model.entity.Trainee;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +24,31 @@ public class TraineeDAOImpl implements TraineeDAO {
     private static final Logger LOGGER = LoggerFactory.getLogger(TraineeDAO.class);
     private final SessionFactory sessionFactory;
     private final TraineeRegistrationRequestMapper registrationRequestMapper;
-    private final TraineeRegistrationResponseMapper registrationResponseMapper;
+    private final GetTraineeProfileRequestMapper getTraineeProfileRequestMapper;
+
+    @Override
+    @Transactional
+    public GetTraineeProfileResponseDTO selectTraineeProfileByUserName(Long id, GetTraineeProfileRequestDTO requestDTO) {
+        Session session = sessionFactory.getCurrentSession();
+        Trainee trainee = getTraineeProfileRequestMapper.toEntity(requestDTO);
+        Trainee traineeId = session.get(Trainee.class, id);
+
+        if (traineeId.getUserName().equals(trainee.getUserName())){
+            getTraineeProfileRequestMapper.toDto(trainee);
+            return GetTraineeProfileResponseDTO
+                    .builder()
+                    .firstName(traineeId.getFirstName())
+                    .lastName(traineeId.getLastName())
+                    .address(traineeId.getAddress())
+                    .isActive(traineeId.getIsActive())
+                    .dateOfBirth(traineeId.getDateOfBirth())
+                    .trainers(traineeId.getTrainers())
+                    .build();
+        }else {
+            throw new RuntimeException("Not available");
+        }
+
+    }
 
 
     @Override
@@ -43,6 +69,7 @@ public class TraineeDAOImpl implements TraineeDAO {
                 .password(password)
                 .build();
     }
+
 
     private static String generateRandomPassword(int length) {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<>?";

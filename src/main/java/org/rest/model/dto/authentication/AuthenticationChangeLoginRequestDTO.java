@@ -1,6 +1,5 @@
 package org.rest.model.dto.authentication;
 
-import com.epam.xstack.model.enums.Code;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthenticationResponseDTO {
-    private String response;
-    private Code code;
+public class AuthenticationChangeLoginRequestDTO {
+    private String userName;
+    private String oldPassword;
+    private String newPassword;
 }

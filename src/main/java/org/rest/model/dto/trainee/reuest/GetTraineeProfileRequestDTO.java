@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetTraineeProfileRequestDTO {
-    private Long id;
     private String userName;
 }
