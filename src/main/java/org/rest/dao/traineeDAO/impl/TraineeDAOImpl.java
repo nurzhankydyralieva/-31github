@@ -5,8 +5,10 @@ import com.epam.xstack.mapper.trainee_mapper.GetTraineeProfileRequestMapper;
 import com.epam.xstack.mapper.trainee_mapper.TraineeRegistrationRequestMapper;
 import com.epam.xstack.model.dto.trainee.response.GetTraineeProfileResponseDTO;
 import com.epam.xstack.model.dto.trainee.response.TraineeRegistrationResponseDTO;
+import com.epam.xstack.model.dto.trainee.response.UpdateTraineeProfileResponseDTO;
 import com.epam.xstack.model.dto.trainee.reuest.GetTraineeProfileRequestDTO;
 import com.epam.xstack.model.dto.trainee.reuest.TraineeRegistrationRequestDTO;
+import com.epam.xstack.model.dto.trainee.reuest.UpdateTraineeProfileRequestDTO;
 import com.epam.xstack.model.entity.Trainee;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
@@ -33,7 +35,7 @@ public class TraineeDAOImpl implements TraineeDAO {
         Trainee trainee = getTraineeProfileRequestMapper.toEntity(requestDTO);
         Trainee traineeId = session.get(Trainee.class, id);
 
-        if (traineeId.getUserName().equals(trainee.getUserName())){
+        if (traineeId.getUserName().equals(trainee.getUserName())) {
             getTraineeProfileRequestMapper.toDto(trainee);
             return GetTraineeProfileResponseDTO
                     .builder()
@@ -44,10 +46,36 @@ public class TraineeDAOImpl implements TraineeDAO {
                     .dateOfBirth(traineeId.getDateOfBirth())
                     .trainers(traineeId.getTrainers())
                     .build();
-        }else {
+        } else {
             throw new RuntimeException("Not available");
         }
 
+    }
+
+
+    @Override
+    @Transactional
+    public UpdateTraineeProfileResponseDTO updateTraineeProfile(Long id, UpdateTraineeProfileRequestDTO requestDTO) {
+        Session session = sessionFactory.getCurrentSession();
+        Trainee traineeToBeUpdated = session.get(Trainee.class, id);
+
+        traineeToBeUpdated.setUserName(requestDTO.getUserName());
+        traineeToBeUpdated.setFirstName(requestDTO.getFirstName());
+        traineeToBeUpdated.setLastName(requestDTO.getLastName());
+        traineeToBeUpdated.setDateOfBirth(requestDTO.getDateOfBirth());
+        traineeToBeUpdated.setAddress(requestDTO.getAddress());
+        traineeToBeUpdated.setIsActive(requestDTO.getIsActive());
+
+        return UpdateTraineeProfileResponseDTO
+                .builder()
+                .userName(traineeToBeUpdated.getUserName())
+                .firstName(traineeToBeUpdated.getFirstName())
+                .lastName(traineeToBeUpdated.getLastName())
+                .dateOfBirth(traineeToBeUpdated.getDateOfBirth())
+                .address(traineeToBeUpdated.getAddress())
+                .isActive(traineeToBeUpdated.getIsActive())
+                .trainers(traineeToBeUpdated.getTrainers())
+                .build();
     }
 
 

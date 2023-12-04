@@ -1,8 +1,12 @@
 package org.rest.service.trainee_service.impl;
 
 import com.epam.xstack.dao.traineeDAO.TraineeDAO;
+import com.epam.xstack.model.dto.trainee.response.GetTraineeProfileResponseDTO;
 import com.epam.xstack.model.dto.trainee.response.TraineeRegistrationResponseDTO;
+import com.epam.xstack.model.dto.trainee.response.UpdateTraineeProfileResponseDTO;
+import com.epam.xstack.model.dto.trainee.reuest.GetTraineeProfileRequestDTO;
 import com.epam.xstack.model.dto.trainee.reuest.TraineeRegistrationRequestDTO;
+import com.epam.xstack.model.dto.trainee.reuest.UpdateTraineeProfileRequestDTO;
 import com.epam.xstack.service.trainee_service.TraineeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,5 +19,15 @@ public class TraineeServiceImpl implements TraineeService {
     @Override
     public TraineeRegistrationResponseDTO saveTrainee(TraineeRegistrationRequestDTO requestDTO) {
         return traineeDAO.saveTrainee(requestDTO);
+    }
+
+    @Override
+    public GetTraineeProfileResponseDTO selectTraineeProfileByUserName(Long id, GetTraineeProfileRequestDTO requestDTO) {
+        return traineeDAO.selectTraineeProfileByUserName(id,requestDTO);
+    }
+
+    @Override
+    public UpdateTraineeProfileResponseDTO updateTraineeProfile(Long id, UpdateTraineeProfileRequestDTO requestDTO) {
+        return traineeDAO.updateTraineeProfile(id,requestDTO);
     }
 }
