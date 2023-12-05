@@ -3,13 +3,15 @@ package org.rest.dao.traineeDAO.impl;
 import com.epam.xstack.dao.traineeDAO.TraineeDAO;
 import com.epam.xstack.mapper.trainee_mapper.GetTraineeProfileRequestMapper;
 import com.epam.xstack.mapper.trainee_mapper.TraineeRegistrationRequestMapper;
-import com.epam.xstack.model.dto.trainee.response.GetTraineeProfileResponseDTO;
-import com.epam.xstack.model.dto.trainee.response.TraineeRegistrationResponseDTO;
-import com.epam.xstack.model.dto.trainee.response.UpdateTraineeProfileResponseDTO;
+import com.epam.xstack.mapper.trainee_mapper.UpdateTraineeProfileRequestMapper;
+import com.epam.xstack.mapper.trainee_mapper.UpdateTrainee_sTrainerListRequestMapper;
+import com.epam.xstack.model.dto.trainee.response.*;
 import com.epam.xstack.model.dto.trainee.reuest.GetTraineeProfileRequestDTO;
 import com.epam.xstack.model.dto.trainee.reuest.TraineeRegistrationRequestDTO;
 import com.epam.xstack.model.dto.trainee.reuest.UpdateTraineeProfileRequestDTO;
+import com.epam.xstack.model.dto.trainee.reuest.UpdateTrainee_sTrainerListRequestDTO;
 import com.epam.xstack.model.entity.Trainee;
+import com.epam.xstack.model.enums.Code;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,6 +29,33 @@ public class TraineeDAOImpl implements TraineeDAO {
     private final SessionFactory sessionFactory;
     private final TraineeRegistrationRequestMapper registrationRequestMapper;
     private final GetTraineeProfileRequestMapper getTraineeProfileRequestMapper;
+    private final UpdateTraineeProfileRequestMapper updateTraineeProfileRequestMapper;
+    private final UpdateTrainee_sTrainerListRequestMapper updateTrainee_sTrainerListRequestMapper;
+
+
+
+    //TODO check mapper 11. Update Trainee's Trainer List
+    @Override
+    @Transactional
+    public UpdateTrainee_sTrainerListResponseDTO updateTrainee_sTrainerList(Long id, UpdateTrainee_sTrainerListRequestDTO requestDTO) {
+        Session session = sessionFactory.getCurrentSession();
+        Trainee trainee = updateTrainee_sTrainerListRequestMapper.toEntity(requestDTO);
+        Trainee traineeToBeUpdated = session.get(Trainee.class, id);
+
+        if (traineeToBeUpdated.getId().equals(trainee.getId())) {
+            traineeToBeUpdated.setUserName(trainee.getUserName());
+            traineeToBeUpdated.setTrainers(trainee.getTrainers());
+
+            updateTrainee_sTrainerListRequestMapper.toDto(trainee);
+            return UpdateTrainee_sTrainerListResponseDTO
+                    .builder()
+                    .trainers(traineeToBeUpdated.getTrainers())
+                    .build();
+        } else {
+            throw new RuntimeException("Not available");
+        }
+    }
+
 
     @Override
     @Transactional
@@ -57,14 +86,16 @@ public class TraineeDAOImpl implements TraineeDAO {
     @Transactional
     public UpdateTraineeProfileResponseDTO updateTraineeProfile(Long id, UpdateTraineeProfileRequestDTO requestDTO) {
         Session session = sessionFactory.getCurrentSession();
+        Trainee trainee = updateTraineeProfileRequestMapper.toEntity(requestDTO);
         Trainee traineeToBeUpdated = session.get(Trainee.class, id);
 
-        traineeToBeUpdated.setUserName(requestDTO.getUserName());
-        traineeToBeUpdated.setFirstName(requestDTO.getFirstName());
-        traineeToBeUpdated.setLastName(requestDTO.getLastName());
-        traineeToBeUpdated.setDateOfBirth(requestDTO.getDateOfBirth());
-        traineeToBeUpdated.setAddress(requestDTO.getAddress());
-        traineeToBeUpdated.setIsActive(requestDTO.getIsActive());
+        traineeToBeUpdated.setUserName(trainee.getUserName());
+        traineeToBeUpdated.setFirstName(trainee.getFirstName());
+        traineeToBeUpdated.setLastName(trainee.getLastName());
+        traineeToBeUpdated.setDateOfBirth(trainee.getDateOfBirth());
+        traineeToBeUpdated.setAddress(trainee.getAddress());
+        traineeToBeUpdated.setIsActive(trainee.getIsActive());
+        updateTraineeProfileRequestMapper.toDto(trainee);
 
         return UpdateTraineeProfileResponseDTO
                 .builder()
@@ -78,6 +109,25 @@ public class TraineeDAOImpl implements TraineeDAO {
                 .build();
     }
 
+    @Override
+    @Transactional
+    public DeleteResponseDTO deleteTraineeByUserName(Long id, GetTraineeProfileRequestDTO requestDTO) {
+        Session session = sessionFactory.getCurrentSession();
+        Trainee trainee = getTraineeProfileRequestMapper.toEntity(requestDTO);
+        Trainee traineeId = session.get(Trainee.class, id);
+
+        if (traineeId.getUserName().equals(trainee.getUserName())) {
+            session.remove(traineeId);
+            return DeleteResponseDTO
+                    .builder()
+                    .response("Trainee is deleted from database")
+                    .code(Code.STATUS_200_OK)
+                    .build();
+        } else {
+            throw new RuntimeException("Trainee is not available in database");
+        }
+
+    }
 
     @Override
     @Transactional

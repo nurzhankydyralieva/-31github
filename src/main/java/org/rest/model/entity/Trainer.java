@@ -13,10 +13,10 @@ import java.util.List;
 @Entity
 @Table(name = "trainer")
 public class Trainer extends User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "trainer_id")
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "trainer_id")
+//    private Long id;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "trainer_trainee",

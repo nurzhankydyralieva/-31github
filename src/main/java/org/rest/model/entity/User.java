@@ -8,12 +8,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "id")
     private Long id;
     @Column(name = "first_name")
     private String firstName;
@@ -29,4 +30,6 @@ public class User {
     private String criteria;
     @Column(name = "is_assigned")
     private Boolean isAssigned;
+
+
 }

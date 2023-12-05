@@ -11,16 +11,14 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Entity
 @Table(name = "trainee")
 public class Trainee extends User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "trainee_id")
-    private Long id;
+    //    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "trainee_id")
+//    private Long id;
     @Column(name = "date_of_birth")
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     @Column(name = "address")
@@ -34,4 +32,12 @@ public class Trainee extends User {
             inverseJoinColumns = @JoinColumn(name = "training_id")
     )
     private List<Training> trainings;
+
+    public Trainee(Long id, String firstName, String lastName, String userName, String password, Boolean isActive, String criteria, Boolean isAssigned, Date dateOfBirth, String address, List<Trainer> trainers, List<Training> trainings) {
+        super(id, firstName, lastName, userName, password, isActive, criteria, isAssigned);
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.trainers = trainers;
+        this.trainings = trainings;
+    }
 }
