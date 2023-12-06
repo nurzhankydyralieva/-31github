@@ -14,10 +14,6 @@ import java.util.List;
 @Entity
 @Table(name = "trainee")
 public class Trainee extends User {
-    //    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "trainee_id")
-//    private Long id;
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
