@@ -1,8 +1,8 @@
-package org.rest.service.trainer_service;
+package org.rest.dao.trainer_dao;
 
 import com.epam.xstack.models.dto.trainer.request.TrainerRegistrationRequestDTO;
 import com.epam.xstack.models.dto.trainer.response.TrainerRegistrationResponseDTO;
 
-public interface TrainerService {
+public interface TrainerDAO {
     TrainerRegistrationResponseDTO saveTrainer(TrainerRegistrationRequestDTO requestDTO);
 }

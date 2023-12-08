@@ -49,6 +49,7 @@ public class SpringConfig implements WebMvcConfigurer {
         properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.format_sql", env.getRequiredProperty("hibernate.format_sql"));
 
         return properties;
     }
@@ -57,7 +58,7 @@ public class SpringConfig implements WebMvcConfigurer {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.epam.xstack.model");
+        sessionFactory.setPackagesToScan("com.epam.xstack.models");
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
@@ -70,4 +71,5 @@ public class SpringConfig implements WebMvcConfigurer {
 
         return transactionManager;
     }
-}
+
+  }
