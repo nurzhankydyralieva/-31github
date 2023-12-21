@@ -2,11 +2,12 @@ package org.codingBat;
 
 public class SumDouble {
     public static void main(String[] args) {
-
+        System.out.println( sumDouble(4, 2));
     }
-    public int sumDouble(int a, int b) {
+
+    public static int sumDouble(int a, int b) {
         int sum = a + b;
-        if(a == b){
+        if (a == b) {
             sum = sum * 2;
         }
         return sum;
